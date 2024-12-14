@@ -1,0 +1,910 @@
+Coding Questions
+
+1] Remove duplicate elements from list
+
+li1 = [1,2,2,2,3,4,5,5,5,6,7,89]
+li2 = []
+
+li2.append(li1[0])
+for i in li1:
+    if i not in li2:
+        li2.append(i)
+        
+print(li2)        //   [1, 2, 3, 4, 5, 6, 7, 89]
+
+
+
+# Python program to print duplicates from 
+# a list of integers
+lis = [1, 2, 1, 2, 3, 4, 5, 1, 1, 2, 5, 6, 7, 8, 9, 9]
+
+uniqueList = []
+duplicateList = []
+
+for i in lis:
+	if i not in uniqueList:
+		uniqueList.append(i)
+	elif i not in duplicateList:
+		duplicateList.append(i)
+
+print(duplicateList)
+*******************************************************
+
+
+2]Factorial
+
+def factorial(num):
+    fact = 1
+    for i in range(1,num+1):
+        fact *= i
+        print(i,fact)
+    print(f"Factorial of {num} is = {fact}")
+
+factorial(5)
+
+*******************************************
+
+num = 5
+fact = 1
+for i in range(1,num+1):
+    fact = fact * i # fact *= i 
+    print(i,fact)
+
+********************************************
+
+def factorial(num):
+    if num == 1:
+        return 1
+    else:
+        return num * factorial(num-1)
+factorial(5)
+
+******************************
+
+def factorial(n):
+    if n == 1: return 1
+    else : return n * factorial(n-1)
+
+factorial(5)
+
+******************************
+
+3] Fibonacci Series
+
+def fibo(n):
+    first = 0
+    second = 1
+    print(f"Fibonacci series = {first} {second}",end =" ")
+    for i in range(n-2):
+        new = first + second
+        first = second
+        second = new
+        print(new,end=" ")
+        
+fibo(10)        //    0 1 1 2 3 5 8 13 21 34 
+
+*********************************************************
+
+4] File handling create 10 files
+
+for i in range(1,11):
+    with open(f"WithSample{i}.txt","w") as f:
+        f.write(f"This is file number{i}")
+
+*************************************************************
+
+5] Remove vowels from string and create new string without vowels
+
+str1 = "Python and data science, we are learning Python, Python is easy language".lower()
+vowels = "aeiou"
+
+new = ""
+for char in str1:
+    if char not in vowels:
+        new += char
+new            //          'pythn nd dt scnc, w r lrnng pythn, pythn s sy lngg'
+
+*********************************************************************
+6] Print n=5 pyramid
+
+n=5
+for i in range(n):
+    for j in range(i+1):
+        print("*", end = " ")
+    print()    
+
+
+op   //  
+
+* 
+* * 
+* * * 
+* * * * 
+* * * * * 
+
+
+
+*********************************************************************************************
+
+7] Take input from user and check given number is odd or even
+
+num = int(input("Enter the number --->  "))
+if num % 2 == 0:
+    print(f"The number is even = {num}")
+else:
+    print(f"The Number is odd = {num}")
+
+op    //    Enter the number --->  50
+The number is even = 50
+
+
+*********************************************************************
+
+8] Print table of any number
+
+num = int(input("Enter number for Table you want :"))
+
+for i in range(1,11):
+    print(f"{num} * {i} = {i * num}")
+
+*****************************************************************
+
+
+9] Find out the min element in list
+
+li = [5,7,9,1,3,5,4]
+min = li[0]
+for i in li:
+	if i < min:
+		min=i
+print(min)  // 1
+
+***********************************************************
+
+10]   Find out the max element in list
+
+li=[3,5,7,8,1,2,5,3,9,4,3]
+max = li[0]
+for i in li:
+    if i>max:
+        max=i
+print(max)    // 9
+
+**********************************************************************
+
+
+11] Q. Write a program to find the summation of all the numbers in the list without using build in function.
+
+li = [5,7,9,1,3,5,4]
+sum=0
+for i in li:
+    sum += i
+print(sum)        // 34
+
+*************************************************************   
+
+12] How To Sort List In Python Without Sort Function
+
+li = []
+num = int(input("How many numberofelements required in list :"))
+for i in range(num):
+    ele = int(input())
+    li.append(ele)
+print(li)   
+for i in range(0,len(li)):
+    for j in range(i+1,len(li)):
+        if li[i] >= li[j]:
+            li[i],li[j] = li[j],li[i]
+print(f"SOrted List :{li}")     
+
+
+
+******************************************************
+
+
+13]    Seprate char and numbers from given string
+
+str = "Akshay9552"
+num=[]
+strn=[]
+
+for char in str:
+    if char < "0" or char > "9":
+        strn+= char
+    else:
+        num += char
+        
+print("".join(strn))
+print()
+print(" ".join(num))
+
+// Akshay
+
+9 5 5 2
+
+
+**********************************************
+
+14]  Add hypen to order id after every 3 digit
+
+num = "698745893217"
+a=""
+b=""
+c=""
+d=""
+count=1
+for i in num:
+    if count <= 3:
+        count += 1
+        a += i
+    elif count > 3 and count<= 6:
+        count += 1
+        b += i
+    elif count > 6 and count<= 9:
+        count += 1
+        c += i
+    elif count > 9 and count<= 12:
+        count += 1
+        d += i  
+dev = lambda a,b,c,d : a+"-"+b+"-"+c+"-"+d
+dev(a,b,c,d)
+
+//         '698-745-893-217'
+
+
+num = "12345678912"
+length = len(num)
+num1 = ""
+cnt = 0
+for i in num:
+    cnt += 1
+    num1 += i
+    if cnt%3 == 0:
+        num1 += "-"
+print(num1)        
+
+
+*********************************************
+
+15] Check count of each word
+
+str = "Data Science is about finding patterns in data data data"
+
+di = {}
+
+for i in str.split():
+    if i not in di.keys():
+        di[i] = 1
+    else:
+        di[i] += 1
+di 
+
+//    
+
+{'Data': 1,
+ 'Science': 1,
+ 'is': 1,
+ 'about': 1,
+ 'finding': 1,
+ 'patterns': 1,
+ 'in': 1,
+ 'data': 3}
+
+************************************************************************
+
+16] Find out unique count of words in string
+
+str = "Data Science is about finding patterns in data data data"
+
+cnt = 0
+
+for i in str.split():
+    if "data" == i:
+        cnt += 1
+        
+print(cnt) 
+
+//     3
+
+
+********************************************************************************
+
+17]  Make flat list(one dimensional) from nested list
+
+li = [1,2,3,[11,22,33],5,6,7,[111,222,333],232,[23,234]]
+flat_list = []
+
+for i in li:
+    if type(i)==int:
+        flat_list.append(i)
+    else:
+        for j in i:
+            flat_list.append(j)
+            
+flat_list  
+
+//   [1, 2, 3, 11, 22, 33, 5, 6, 7, 111, 222, 333, 232, 23, 234]
+
+
+**********************************************************************
+
+18] We have two lists then create  dictionary 
+
+lang_name = ["Python","Java","C","R","GoLang"]
+popularity = [95, 89, 75, 79, 70]
+
+lang_dict = {}
+for i in range(0,len(lang_name)):
+    lang_dict.update({lang_name[i]:popularity[i]})
+print(lang_dict) 
+
+//   {'Python': 95, 'Java': 89, 'C': 75, 'R': 79, 'GoLang': 70}    
+
+** Using for loop
+
+for ind, lang in enumerate(lang_name):
+    di[lang] = popularity[ind]
+
+** using zip()
+
+dict(zip(lang_name,popularity))
+
+********************************************************************************
+
+
+19] to check prime number or not
+
+a whole number greater than 1 that 
+cannot be exactly divided by any whole number other than itself and 1 
+(e.g. 2, 3, 5, 7, 11).
+
+num = int(input("Enter number for checking of prime number :"))
+flag = False
+
+if num > 1:
+    for i in range(2,num):
+        if (num%i)==0:
+            flag = True
+            break
+            
+if flag:
+    print(f"{num} number is not prime number")
+else:
+    print(f"{num} number is prime number")
+
+//  Enter number for checking of prime number :8
+8 number is not prime number
+
+***************************************************************************
+
+20] User menu driven program
+
+
+def add(x,y):
+    print("Add =",x + y)
+
+def mul(x,y):
+    print("Mul =",x * y)
+    
+def sub(a,b):
+    print("Sub =",a - b)
+    
+def div(a,b):
+    print("Div =",a/b)
+    
+def calc(x,y):
+    which_operation = int(input(f"Enter \n1 for addition\n2 for mul\n3 for sub\n4 for div"))
+    if which_operation == 1:
+        add(x,y)
+    elif which_operation == 2:
+        mul(x,y)
+    elif which_operation == 3:
+        sub(x,y)
+    else:
+        div(x,y)
+
+x = 10
+y = 5
+calc(x,y)
+       
+
+*********************************************************************************
+
+21]  To check palindrome number or not
+
+A palindromic number is a number 
+(such as 16461) that remains the same when its digits are reversed
+
+num = int(input("Enter number for chechking palindrome :"))
+
+temp = num
+rev = 0
+
+while(num>0):
+    dig = num%10
+    rev = rev*10+dig
+    num = num//10
+    
+if (temp==rev):
+    print(f"{rev} is palindrome number")
+else:
+    print(f"{temp} is not palindrome number")
+
+******************************************************************************************
+22] to check given string is palindrome or not
+
+str = input("Enter your string :")
+
+if str==str[::-1]:
+    print(f"{str} is palindrome string")
+else:
+    print(f"{str} is not palindrome string")
+
+************************************************************************************
+23] Python program to calculate the avg of numbers in lists
+
+li = [4,6,7,8,9,3,2,1,4,5,6,6]
+
+avg = sum(li)/len(li)
+print(avg)
+    
+
+***********************************************************************************
+
+24] Python program to exchange the values of two numbers without using third variable
+
+x = 5.4
+y = 10.3
+ 
+print ("Before swapping: ")
+print("Value of x : ", x, " and y : ", y)
+ 
+# Swap code
+x = x + y # x = 15.7, y = 10.3
+y = x - y # x = 15.7, y = 5.4
+x = x - y # x = 10.3, y = 5.4
+
+print ("After swapping: ")
+print("Value of x : ", x, " and y : ", y)
+
+method 2]
+
+a = 5
+b = 10
+
+
+def swap(a,b):
+    return b,a
+
+a,b=swap(a,b)
+
+print("a",a)
+print("b",b)
+
+method 3]
+
+a = 5
+b = 10
+
+b,a = a,b
+
+print("a",a)
+print("b",b)
+
+**********************************************************************************
+
+25]  Python progam to reverse the given number
+
+num = 567
+rev = 0
+
+while num>0 :
+    dig = num%10
+    rev = rev*10 + dig
+    num = num//10
+    
+print(rev)    //   765
+
+****************************************************************************************
+
+26]  python program to take a five subject marks and display the grade
+
+marks = {} 
+total = 0 
+subjects = ["Math", "English", "Physics", "Chemistry", "Hindi"] 
+ 
+for subject in subjects: 
+    marks[subject] = input("Enter " + subject + " marks : ") 
+ 
+for val in marks.values(): 
+    total += int(val) 
+ 
+percentage = (total*100) / 500  
+ 
+if percentage >= 80: 
+    print("Grade A") 
+elif percentage >= 60: 
+    print("Grade B") 
+elif percentage >= 50: 
+    print("Grade C") 
+else: 
+    print("Fail") 
+ 
+print(f"With a percentage of {percentage}%")
+
+**************************************************************************************
+
+27] python program to prirnt all numbers in range divisible by given number
+
+lower=int(input("Enter lower range limit:"))
+upper=int(input("Enter upper range limit:"))
+n=int(input("Enter the number to be divided by:"))
+for i in range(lower,upper+1):
+    if(i%n==0):
+        print(i)
+
+*******************************************************************************************
+
+28] PP to read two numbers and print there quotrient and reminder
+
+a=int(input("Enter the first number: "))
+b=int(input("Enter the second number: "))
+quotient=a//b
+remainder=a%b
+print("Quotient is:",quotient)
+print("Remainder is:",remainder)
+
+******************************************************************************************
+
+29] PP to count the number of digits in num
+
+num = 987548346723657
+cnt =0
+
+while num > 0 :
+    cnt += 1
+    num = num//10
+        
+print(cnt)        
+
+************************************************************************************
+
+30] PP to find count of the particular number from num
+
+
+num = 987548346723657
+sub_num = 7
+str1 = str(num)
+str2 = str(sub_num)
+cnt =0
+for i in str1:
+    if i==str2:
+        cnt += 1
+        
+print(cnt)        
+
+
+****************************************************************************
+
+31] PP to find the union of two lists
+
+li1 = [1,2,3,4,5,6,7]
+li2 = [3,4,5,6,7,8,9]
+li3 = []
+
+for i in li1:
+    if i not in li3:
+        li3.append(i)
+        
+for i in li2:
+    if i not in li3:
+        li3.append(i)
+        
+print(li3)        
+
+
+**********************************************************************
+
+32] PP to swap the first and last value of the list
+
+def swapList(newList):
+	size = len(newList)
+	
+	# Swapping
+	temp = newList[0]
+	newList[0] = newList[size - 1]
+	newList[size - 1] = temp
+	
+	return newList
+
+newList = [12, 35, 9, 56, 24]
+
+print(swapList(newList))
+
+***************************************************************************
+
+33] PP to find out common elements from two list
+
+li1 = [1,2,3,4,5,6,7]
+li2 = [3,4,5,6,7,8,9]
+li3 = []
+
+for i in li1:
+    if i in li2:
+        li3.append(i)
+        
+print(li3)        
+
+******************************************************************************
+
+34] from list of dictionary sort that list by price
+
+li = [
+    {'car':'Maruti', 'price':987},
+    {'car':'Skoda', 'price':667},
+    {'car':'Vwagon', 'price':210},
+    {'car':'BMW', 'price':999},
+    {'car':'Mercedez', 'price':786}
+]
+
+new_li = sorted(li,key=lambda x : x['price'],reverse=True)
+
+print(new_li)
+print()
+for i in new_li:
+    print(i.get('price'))
+
+**************************************************************************************
+
+35] If nested list how to make flatten list
+
+li = [1,2,3,[11,22,33],5,6,7,[111,222,[99,88,77],333],232,[23,234]]
+flat_list = []
+
+def reemovNestings(li):
+    for i in li:
+        if type(i) == list:
+            reemovNestings(i)
+        else:
+            flat_list.append(i)
+            
+print("Original list :",li)            
+reemovNestings(li)            
+print("FLattened List :", flat_list)
+
+//     Original list : [1, 2, 3, [11, 22, 33], 5, 6, 7, [111, 222, [99, 88, 77], 333], 232, [23, 234]]
+FLattened List : [1, 2, 3, 11, 22, 33, 5, 6, 7, 111, 222, 99, 88, 77, 333, 232, 23, 234]
+
+*****************************************************************************************
+
+36] Create a function to find numbers divisible by 7 but not by 5 
+between 2000 to 3000(both included) and printing a result numbers in comma seprated new lines
+
+def func():
+    for i in range(2000,3001):
+        if i%7==0 and i%5!=0:
+            print(i,end = ",\n")
+
+func()        
+
+***************************************************************************
+
+37]  Reversing a string
+
+str1 = "AKshay"
+print(f"Without reverse ={str1}")
+
+
+def reverse(str1):
+    str2=""
+    for char in str1:
+        str2 = char + str2
+    return str2
+rev_str = reverse(str1)
+print(f"Reversed string is {rev_str}")
+
+
+*************************************************************************
+
+38] find out first repeated charachter from string
+
+str1 = "Helloworld"
+str2 = ""
+for i in str1:
+    if i not in str2:
+        str2 = str2+i
+    else:
+        print(i)
+        break
+
+
+
+str1 = "HelLoworld"
+di = {}
+for i in str1:
+    if i in di:
+        print(i)
+        break
+    else:
+        di[i]=1
+
+print(di)
+
+*************************************************************************
+39] find out count of char and number from string
+
+str1 = "Hello12345"
+li1 =[]
+li2 = []
+
+for i in str1:
+    if i <= "0" or i >= "9":
+        li1.append(i)
+    else:
+        li2.append(i)
+
+
+
+str1 = "Hello12345"
+alpha,digit = 0,0
+
+for i in str1:
+    if i.isalpha():
+        alpha += 1
+    elif i.isdigit():
+        digit += 1
+    else:
+        print(f"Charachter is special charachter")
+
+print(f"COunt of Alphabets is :{alpha}")
+print(f"COunt of Digits is : {digit}")
+
+***********************************************************************************
+
+40] find common words from 2 strings
+
+a = "Hello how are you"
+b = "How about you hello"
+
+for i in a.lower().split():
+    if i in b.lower().split():
+        print(i)
+
+
+************************************************************************
+
+
+41] remove special chars from the string
+
+str1 = "aksh$$ay1234@@$$"
+str2 = ""
+for i in str1:
+    if i.isalnum():
+        str2+=i
+
+print(str2)
+
+***************************************************************************
+
+42] remove special chars and find out count of alpha and digits.
+
+str1 = "aksh$$ay1234@@$$"
+str2 = ""
+alpha,digit = 0,0
+for i in str1:
+    if i.isalnum():
+        if i.isalpha():
+            alpha += 1
+        else:
+            digit += 1
+print(alpha)
+print(digit)
+
+
+*****************************************************************************
+
+
+
+43] print op like AbCdEfGhIjKlMnOpQrStUvWxYz
+
+
+str1 = ""
+num = 65
+for i in range(num,num+26):
+    if i%2 != 0:
+        str1 += chr(i).upper()
+    else:
+        str1 += chr(i).lower()
+        
+print(str1) 
+
+
+
+**********************************************************************************
+
+44] How to remove the duplicate words in the string ?
+
+string = 'Python is great and Java is also great'
+
+" ".join(dict.fromkeys(string.split()))
+
+
+
+str1 = "how are you hello you how"
+li=str1.split()
+li
+newli=[]
+for i in li:
+    if i not in newli:
+        newli.append(i)
+        
+" ".join(newli)
+
+
+
+**********************************************************
+
+45] Armstrong number  3 digit so  153     1*1*1+5*5*5+3*3*3=153   sum of cubes of digits
+
+num=int(input("ENter number"))
+
+def is_arm(num):
+    num_str=str(num)
+    n=len(num_str)
+    summ=0
+    
+    for i in num_str:
+        summ += int(i)**n
+        
+    return summ
+
+summ=is_arm(num)
+if num==summ:
+    print(f"{num} is armstrong")
+else:
+    print(f"{num} is not armstrong")
+
+
+
+****************************************************
+
+
+46]  Find most repeated elements
+
+from collections import Counter
+
+li=[1,2,3,4,5,1,1,2,2,2,2]
+
+def most_common1(li):
+    count=Counter(li)
+    most_c=count.most_common(1)[0][0]
+    return most_c
+
+res=most_common1(li)
+print(f"Most common element is {res}")
+
+
+*********************************************
+
+47] Anagaram strings
+
+
+str1 = 'listen abcd'
+str2='silent   bcda'
+
+def check_ana(str1,str2):
+    str1=str1.replace(" ","").lower()
+    str2=str2.replace(" ","").lower()
+    
+    if len(str1)==len(str2):
+        if sorted(str1)==sorted(str2):
+            print("Strings are anagaram")
+        else:
+            print("Not anagaram")
+    else:
+        print("Not anagaram")
+
+check_ana(str1,str2)
+
+
+**********************************************************
